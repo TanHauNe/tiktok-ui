@@ -2,14 +2,38 @@ import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, /*faSpinner,*/ faXmark } from '@fortawesome/free-solid-svg-icons';
+import {
+   faCircleQuestion,
+   faEllipsisVertical,
+   faKeyboard,
+   faLanguage,
+   faMagnifyingGlass,
+   /*faSpinner,*/ faXmark,
+} from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 import { useState, useEffect } from 'react';
 import Wrapper from '~/components/Popper/Wrapper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Menu from '~/components/Popper/Menu';
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+   {
+      icon: <FontAwesomeIcon icon={faLanguage}></FontAwesomeIcon>,
+      title: 'English',
+   },
+   {
+      icon: <FontAwesomeIcon icon={faCircleQuestion}></FontAwesomeIcon>,
+      title: 'Feedback and help',
+      to: '/feedback'
+   },
+   {
+      icon: <FontAwesomeIcon icon={faKeyboard}></FontAwesomeIcon>,
+      title: 'Keyboard shortcut',
+   },
+];
 
 function Header() {
    const [searchResult, setSearchResult] = useState([]);
@@ -31,17 +55,15 @@ function Header() {
                visible={searchResult.length > 0}
                render={(attrs) => (
                   <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                     {/* <Wrapper>
-                        <h4 className={cx('search-title')}>
-                          Accounts
-                        </h4>
+                     <Wrapper>
+                        <h4 className={cx('search-title')}>Accounts</h4>
                         <AccountItem></AccountItem>
                         <AccountItem></AccountItem>
                         <AccountItem></AccountItem>
                         <AccountItem></AccountItem>
                         <AccountItem></AccountItem>
                         <AccountItem></AccountItem>
-                     </Wrapper> */}
+                     </Wrapper>
                   </div>
                )}
             >
@@ -59,6 +81,12 @@ function Header() {
             <div className={cx('action')}>
                <Button text>Upload</Button>
                <Button primary>Log in</Button>
+
+               <Menu items={MENU_ITEMS}>
+                  <button className={cx('more-btn')}>
+                     <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
+                  </button>
+               </Menu>
             </div>
          </div>
       </header>
