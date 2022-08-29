@@ -7,6 +7,7 @@ import Tippy from '@tippyjs/react/headless';
 import { useState, useEffect } from 'react';
 import Wrapper from '~/components/Popper/Wrapper';
 import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -30,7 +31,7 @@ function Header() {
                visible={searchResult.length > 0}
                render={(attrs) => (
                   <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                     <Wrapper>
+                     {/* <Wrapper>
                         <h4 className={cx('search-title')}>
                           Accounts
                         </h4>
@@ -40,7 +41,7 @@ function Header() {
                         <AccountItem></AccountItem>
                         <AccountItem></AccountItem>
                         <AccountItem></AccountItem>
-                     </Wrapper>
+                     </Wrapper> */}
                   </div>
                )}
             >
@@ -55,7 +56,10 @@ function Header() {
                   </button>
                </div>
             </Tippy>
-            <div className={cx('action')}></div>
+            <div className={cx('action')}>
+               <Button text>Upload</Button>
+               <Button primary>Log in</Button>
+            </div>
          </div>
       </header>
    );
