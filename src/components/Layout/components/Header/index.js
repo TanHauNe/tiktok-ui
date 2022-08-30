@@ -23,17 +23,34 @@ const MENU_ITEMS = [
    {
       icon: <FontAwesomeIcon icon={faLanguage}></FontAwesomeIcon>,
       title: 'English',
+      children: {
+         title: 'Language',
+         data: [
+            {
+               code: 'en',
+               title: 'English',
+            },
+            {
+               code: 'vi',
+               title: 'Vietnamese',
+            },
+         ],
+      },
    },
    {
       icon: <FontAwesomeIcon icon={faCircleQuestion}></FontAwesomeIcon>,
       title: 'Feedback and help',
-      to: '/feedback'
+      to: '/feedback',
    },
    {
       icon: <FontAwesomeIcon icon={faKeyboard}></FontAwesomeIcon>,
       title: 'Keyboard shortcut',
    },
 ];
+
+const handleMenuChange = (menuItem) => {
+   console.log(menuItem);
+};
 
 function Header() {
    const [searchResult, setSearchResult] = useState([]);
@@ -82,7 +99,7 @@ function Header() {
                <Button text>Upload</Button>
                <Button primary>Log in</Button>
 
-               <Menu items={MENU_ITEMS}>
+               <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                   <button className={cx('more-btn')}>
                      <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
                   </button>
