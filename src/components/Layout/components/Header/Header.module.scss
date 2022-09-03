@@ -106,3 +106,25 @@
    padding: 16px;
    cursor: pointer;
 }
+
+.action {
+   display: flex;
+   align-items: center;
+}
+
+.action-btn {
+   font-style: 2.6rem;
+   color: #161823;
+   background-color: transparent;
+   padding: 4px 12px;
+   cursor: pointer;
+}
+
+.user-avatar{
+   width: 32px;
+   height: 32px;
+   border-radius: 50%;
+   object-fit: cover;
+   margin-left: 12px;
+   cursor: pointer;
+}
